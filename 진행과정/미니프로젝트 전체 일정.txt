@@ -1,0 +1,23 @@
+* 미니프로젝트 전체 일정
+: 4/22(월) ~ 4.26(금)
+
+* 발표
+- 4/26(금) 오후 3시부터~
+- 발표 시간 : 20~ 25분
+- 발표 내용 : ppt + 웹시연(네트워크 상황에 따라 zoom으로 진행)
+- 발표 내용 샘플 : 구글드라이브 참고
+
+* 최종 제출 문서
+: 팀별 최종 발표 ppt, 결과물 폴더 전체.zip (분석+웹+DB스크립트)
+
+* 필수 포함내용(평가 대상)
+- Database 적용
+- 분석 모델 또는 현황분석 시각화 적용(모두 또는 일부)
+- File Data, Open-API Data, 웹크롤링 Data 적용(모두 또는 일부)
+
+
+conda create -n pk_smart python=3.9
+conda activate pk_smart
+python -m pip install --upgrade pip
+pip install jupyter notebook
+python -m ipykernel install --user --name pk_smart --display-name pk_smart_kernel
