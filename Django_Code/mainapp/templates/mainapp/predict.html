@@ -1,0 +1,312 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예상 대기시간</title>
+    <link rel="stylesheet" href="{% static 'mainapp/bootstrap/css/bootstrap.min.css' %}">
+    <!-- jQuery 자바스크립트 적용하기 -->
+    <script type="text/javascript" src="{% static 'mainapp/js/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript">
+      function gosubmit() {
+        fm = document.getElementById("fm");
+        ari_co=fm.ARI_CO.value;
+        ari_po=fm.ARI_PO.value;
+        ship_type_category=fm.SHIP_TYPE_CATEGORY.value;
+        dist=fm.DIST.value;
+        breadth=fm.BREADTH.value;
+        built=fm.BUILT.value;
+        deadweight=fm.DEADWEIGHT.value;
+        depth=fm.DEPTH.value;
+        draught=fm.DRAUGHT.value;
+        gt=fm.GT.value;
+        length=fm.LENGTH.value;
+        flag=fm.FLAG.value;
+        u_wind=fm.U_WIND.value;
+        v_wind=fm.V_WIND.value;
+        air_temperature=fm.AIR_TEMPERATURE.value;
+        bn=fm.BN.value;
+        ata_lt=fm.ATA_LT.value;
+        port_size=fm.PORT_SIZE.value;
+        year=fm.year.value;
+        month=fm.month.value;
+        day=fm.day.value;
+        hour=fm.hour.value;
+        minute=fm.minute.value;
+        weekday=fm.weekday.value;
+        fm.action="/predict/predict_update/";
+        fm.submit();
+      }
+      function goLogout() {
+        location.href="/";
+      }
+    </script>
+    <style>
+      *{
+        font-family: 'Noto Sans KR', sans-serif;
+        list-style: none;
+        text-decoration: none;
+        border-collapse: collapse;
+        margin:0px;
+        padding: 0px;
+        color: #000;
+      }
+      .button {
+        padding-left: 610px;
+      }
+      h1 {
+        font-size: 48px;
+        font-weight: 100;
+      }
+      .contents1{
+        font-size: 20px;
+        font-weight: lighter;
+      }
+      .contents2{
+        font-size: 18px;
+      }
+      .contents3 {
+        font-size: 14px;
+        font-weight: 100;
+      }
+      .contents1_bold{
+        font-size: 18px;
+        font-weight: bold;
+      }
+      /* --- */
+      
+      .result{
+        font-size: 24px;
+      }
+      
+      .intro_bg{
+        background-image: url("/static/mainapp/image/009.jpg");
+        width: 100%;
+        height: 714px;
+      }
+
+      .intro_bg2{
+        background-image: url("/static/mainapp/image/010.jpg");
+        width: 100%;
+        height: 714px;
+      }
+
+      .intro_bg3{
+        background-image: url("/static/mainapp/image/011.jpg");
+        width: 100%;
+        height: 714px;
+      }
+      
+      .amount{
+        position: relative;
+        top:-66px;
+        display: flex;
+        width:1280px;
+        background: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+      }
+      .amount > li {
+        flex: 1;
+        height: 132px;
+      }
+      .amount > li > div {
+        text-align: center;
+        margin-top:37px;
+        height:57px;
+      }
+      
+      .amount > li:not(:last-child) > div{
+        border-right:1px solid #E1E1E1;
+      }
+      .intro_text{
+        width:100%;
+        margin:80px auto 80px auto;
+        text-align: center;
+      }
+      .intro_text > h1,
+      .intro_text > h4,
+      .intro_text > h2{
+        color:#fff;
+      }
+
+      .intro_text2 > h2{
+        width:100%;
+        margin:80px auto 80px auto;
+        text-align: center;
+        color:#2e2929;
+      }
+
+      .visual {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual > h4 {
+        color:#fff;
+      }
+
+      .visual2 {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual2 > h4 {
+        color:#2e2929;
+      }
+
+      .visual3 {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual3 > h4 {
+        color:#fff;
+      }
+
+
+      /* main_text0 */
+
+      .main_text0{
+        width: 100%;
+        height:650px;
+        background: #f1f2f3;
+      }
+      .main_text0 > h1{
+        padding-top:116px;
+        text-align: center;
+      }
+      .main_text0 > .contents1 {
+        text-align: center;
+      }
+
+      .icons{
+        display: flex;
+        width:1280px;
+        height: 302px;
+        margin: auto;
+      }
+
+      .icons > li {
+        flex: 1;
+        background: white;
+        margin-top:49px;
+        height:350px;
+        text-align: center;
+      }
+      .icons > li > .icon_img{
+        margin-top:30px;
+      }
+
+      .icons > li:not(:last-child){
+        margin-right: 20px;
+      }
+
+      .icons .contents2 {
+        width:280px;
+        margin:auto;
+        letter-spacing: -1px;
+      }
+      .more{
+        width:100px;
+        height: 30px;
+        background: #2F7AF4;
+        color: #fff;
+        font-size: 12px;
+        line-height: 30px;
+        margin:25px auto;
+      }
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KDWs</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/outline/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/visualization/">Visualization</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/predict/">Predict</a>
+              </li>
+            </ul>
+            <button onclick="goLogout()" type="submit">Logout</button>
+          </div>
+        </div>
+      </nav>
+        
+  <form id='fm' name='fm' method="post" action="#">
+    {% csrf_token %}
+ 
+      <div class="container">
+        <div class="row">
+          <div class = 'w-25 p-3 col'>
+              <label class="form-label">ARI_CO</label>
+              <input class="form-control" type="text" value="0.8701312196771614" name="ARI_CO">
+              <label class="form-label">ARI_PO</label>
+              <input class="form-control" type="text" value="0.772780535214168" name="ARI_PO" >
+              <label class="form-label">SHIP_TYPE_CATEGORY</label>
+              <input type="text" class="form-control" value="-1.144621570014083" name="SHIP_TYPE_CATEGORY" >
+              <label class="form-label">DIST</label>
+              <input type="text" class="form-control" value="-0.683742927734251" name="DIST" >
+              <label class="form-label">BREADTH</label>
+              <input type="text" class="form-control" value="1.7751150975561056" name="BREADTH" >
+              <label class="form-label">BUILT</label>
+              <input type="text" class="form-control" value="0.5028616181540247" name="BUILT" >
+              <label class="form-label">DEADWEIGHT</label>
+              <input type="text" class="form-control" value="1.0007720542321477" name="DEADWEIGHT" >
+              <label class="form-label">DEPTH</label>
+              <input type="text" class="form-control" value="2.2368396166094158" name="DEPTH" >
+              <label class="form-label">DRAUGHT</label>
+              <input type="text" class="form-control" value="10.0" name="DRAUGHT" >
+              <label class="form-label">GT</label>
+              <input type="text" class="form-control" value="2.031557547842214" name="GT" >
+              <label class="form-label">LENGTH</label>
+              <input type="text" class="form-control" value="1.7776702187490316" name="LENGTH" >
+              <label class="form-label">FLAG</label>
+              <input type="text" class="form-control" value="0.5051834505317587" name="FLAG" >
+          </div> 
+          <div class = 'w-25 p-3 col'>
+              <label class="form-label">U_WIND</label>
+              <input type="text" class="form-control" value="0.34604273378170014" name="U_WIND" >
+              <label class="form-label">V_WIND</label>
+              <input type="text" class="form-control" value="0.8444221467767216" name="V_WIND" >
+              <label class="form-label">AIR_TEMPERATURE</label>
+              <input type="text" class="form-control" value="0.9660531684180411" name="AIR_TEMPERATURE" >
+              <label class="form-label">BN</label>
+              <input type="text" class="form-control" value="-1.0234184659095489" name="BN" >
+              <label class="form-label">ATA_LT</label>
+              <input type="text" class="form-control" value="1.0774229807153826" name="ATA_LT" >
+              <label class="form-label">PORT_SIZE</label>
+              <input type="text" class="form-control" value="2.0758174644138285" name="PORT_SIZE" >
+              <label class="form-label">year</label>
+              <input type="text" class="form-control" value="0.37953845161644784" name="year" >
+              <label class="form-label">month</label>
+              <input type="text" class="form-control" value="-0.12813204591390387" name="month" >
+              <label class="form-label">day</label>
+              <input type="text" class="form-control" value="0.25763559673777486" name="day" >
+              <label class="form-label">hour</label>
+              <input type="text" class="form-control" value="0.004495244612440797" name="hour"  >
+              <label class="form-label">minute</label>
+              <input type="text" class="form-control" value="1.4751774947829441" name="minute" >
+              <label class="form-label">weekday</label>
+              <input type="text" class="form-control" value="0.32823326923781937" name="weekday" >
+          </div>
+      </div>   
+    <div class="button"><button type="button" class="btn btn-dark" onclick="gosubmit()">제출</button></div>
+      
+
+  </form>
+  
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> ::: Login_Page  ::: </title>
+    <link rel="stylesheet" href="{% static 'mainapp/bootstrap/css/bootstrap.min.css' %}">
+    <!-- jQuery 자바스크립트 적용하기 -->
+    <script type="text/javascript" src="{% static 'mainapp/js/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript">
+       function gosubmit(){
+        fm= document.getElementById("fm");
+        mem_id=fm.id.value;
+        mem_pass=fm.password.value;
+        if (mem_id == ""){
+            alert("아이디를 입력해주세요");
+            fm.mem_id.focus();
+        }
+        if (mem_pass == ""){
+            alert("비밀번호를 입력해주세요");
+            fm.mem_pass.focus();
+        }
+        fm.action="/login/";
+        fm.submit();
+       }
+    </script>
+    <style> 
+        .div1 {margin-left: 800px; width: 300px; height: 300px; background-image:  url("/static/mainapp/image/lock.png");}
+    </style>
+</head>
+<body>
+    <div class="div1">
+    </div>
+    <div class="div2">
+        <form class="container" id="fm" method="post" action="#">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">ID</label>
+                <input type="text" class="form-control" name="id" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <button onclick="gosubmit()" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>

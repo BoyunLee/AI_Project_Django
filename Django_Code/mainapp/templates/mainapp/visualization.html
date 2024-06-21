@@ -1,0 +1,436 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: Map Page :::</title>
+    <link rel="stylesheet" href="{% static 'mainapp/bootstrap/css/bootstrap.min.css' %}">
+    <!-- jQuery 자바스크립트 적용하기 -->
+    <script type="text/javascript" src="{% static 'mainapp/js/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript">
+      function goLogout() {
+        location.href="/";
+      }
+    </script>
+    <style>
+      *{
+        font-family: 'Noto Sans KR', sans-serif;
+        list-style: none;
+        text-decoration: none;
+        border-collapse: collapse;
+        margin:0px;
+        padding: 0px;
+        color: #000;
+      }
+      
+      h1 {
+        font-size: 48px;
+        font-weight: 100;
+      }
+      .contents1{
+        padding-left : 50px;
+        font-size: 20px;
+        font-weight: lighter;
+      }
+      .contents2{
+        font-size: 18px;
+      }
+      .contents3 {
+        font-size: 14px;
+        font-weight: 100;
+      }
+      .contents1_bold{
+        font-size: 18px;
+        font-weight: bold;
+      }
+      /* --- */
+      
+      .result{
+        font-size: 24px;
+      }
+      
+      .intro_bg{
+        background-image: url("/static/mainapp/image/009.jpg");
+        width: 100%;
+        height: 714px;
+      }
+
+      .intro_bg2{
+        background-image: url("/static/mainapp/image/010.jpg");
+        width: 100%;
+        height: 714px;
+      }
+
+      .intro_bg3{
+        background-image: url("/static/mainapp/image/011.jpg");
+        width: 100%;
+        height: 714px;
+      }
+      
+      .amount{
+        position: relative;
+        top:-66px;
+        display: flex;
+        width:1280px;
+        background: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin: auto;
+      }
+      .amount > li {
+        flex: 1;
+        height: 132px;
+      }
+      .amount > li > div {
+        text-align: center;
+        margin-top:37px;
+        height:57px;
+      }
+      
+      .amount > li:not(:last-child) > div{
+        border-right:1px solid #E1E1E1;
+      }
+      .intro_text{
+        width:100%;
+        margin:80px auto 80px auto;
+        text-align: center;
+      }
+      .intro_text > h1,
+      .intro_text > h4,
+      .intro_text > h2{
+        color:#fff;
+      }
+
+      .intro_text2 > h2{
+        width:100%;
+        margin:80px auto 80px auto;
+        text-align: center;
+        color:#2e2929;
+      }
+
+      .visual {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual > h4 {
+        color:#fff;
+      }
+
+      .visual2 {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual2 > h4 {
+        color:#2e2929;
+      }
+
+      .visual3 {
+        margin-left: 50px;
+        display: flex;
+      }
+
+      .visual3 > h4 {
+        color:#fff;
+      }
+
+
+      /* main_text0 */
+
+      .main_text0{
+        width: 100%;
+        height:650px;
+        background: #f1f2f3;
+      }
+      .main_text0 > h1{
+        padding-top:116px;
+        text-align: center;
+      }
+      .main_text0 > .contents1 {
+        text-align: center;
+      }
+
+      .icons{
+        display: flex;
+        width:1280px;
+        height: 302px;
+        margin: auto;
+      }
+
+      .icons > li {
+        flex: 1;
+        background: white;
+        margin-top:49px;
+        height:350px;
+        text-align: center;
+      }
+      .icons > li > .icon_img{
+        margin-top:30px;
+      }
+
+      .icons > li:not(:last-child){
+        margin-right: 20px;
+      }
+
+      .icons .contents2 {
+        
+        margin-right:20px;
+        letter-spacing: -1px;
+      }
+      .more{
+        width:100px;
+        height: 30px;
+        background: #2F7AF4;
+        color: #fff;
+        font-size: 12px;
+        line-height: 30px;
+        margin:25px auto;
+      }
+
+      .ul {
+        padding-right :15px;
+      }
+
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KDWs</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/outline/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/visualization/">Visualization</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/predict/">Predict</a>
+              </li>
+            </ul>
+            <button onclick="goLogout()" type="submit">Logout</button>
+          </div>
+        </div>
+      </nav>
+    <div class="main_text0">
+      <h1>Work Flow</h1>
+      <div class="contents1">전략적 분석 후 개발 및 모델 구축을 진행합니다.</div>
+      
+      <ul class="icons">
+        <li>
+          <div class="icon_img">
+            <img src="/static/mainapp/image/work/work01.png" width="100" height="100">
+          </div>
+          <br>
+          <div class="contents1_bold">Domain Analysis<br>도메인분석</div>
+          <div class="contents2">
+            <br>
+            <ul class="ul">
+              <li>비즈니스 이해 및 범위 설정</li>
+              <li>도메인문제 정의 및 분석</li>
+              <li>래퍼런스 조사 및 분석</li>
+              <li>시스템 구축 목표 설정</li>
+          </ul>
+          </div>
+        </li>
+    
+        <li>
+          <div class="icon_img">
+            <img src="/static/mainapp/image/work/work02.png" width="100" height="100">
+          </div>
+          <br>
+          <div class="contents1_bold">preprocessing<br>데이터 분석</div>
+          <div class="contents2">
+            <br>
+            <ul class="ul">
+              <li>데이터 특성 분석</li>
+              <li>데이터 이상치 처리</li>
+              <li>데이터 표준화 및 정규화</li>
+              <li>데이터 주요 특성 추출</li>
+          </ul>
+          </div>
+        </li>
+    
+        <li>
+          <div class="icon_img">
+            <img src="/static/mainapp/image/work/work03.png"  width="100" height="100">
+          </div>
+          <br>
+          <div class="contents1_bold">Visualization<br>데이터 시각화</div>
+          <div class="contents2">
+            <br>
+            <ul class="ul">
+              <li>데이터 시각화</li>
+              <li>탐색적 데이터분석(EDA)</li>
+          </ul>
+          </div>
+        </li>
+
+        <li>
+          <div class="icon_img">
+            <img src="/static/mainapp/image/work/work04.png"  width="100" height="100">
+          </div>
+          <br>
+          <div class="contents1_bold">Modelling<br>모델 구축</div>
+          <div class="contents2">
+            <br>
+            <ul class="ul">
+              <li>모델 생성</li>
+              <li>하이퍼파라메터튜닝</li>
+              <li>모델 검증 및 예측</li>
+              <li>최종 모델 선정</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="wrap">
+      <div class="intro_bg">
+        <!-- <div class="header"> -->
+          <!-- <div class="searchArea"> -->
+        <div class="intro_text">
+          <h1>Visualization</h1>
+          <h4 class="contents1">탐색적 데이터분석을 기반으로 인사이트를 도출합니다.</h4>
+        </div>
+      <div class="visual"> 
+      <img src="/static/mainapp/image/Visualization/v_001.png"  width="600" height="450">
+      <h4 class="contents1">
+        유의미한 데이터를 분류하기 위한 상관분석 히트맵입니다.
+        <br>
+        범주형 자료의 경우 상관분석을 위해 변수 인코딩을 활용하였습니다.
+      </h4>
+      </div>
+    </div>
+      </div>
+      </div>
+      <!-- intro end-->
+     
+
+      <ul class="amount">
+        <li>
+          <div>
+            <img src="/static/mainapp/image/work/database.png"  width="50" height="50">
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="/static/mainapp/image/work/stats.png"  width="50" height="50">
+          </div>
+        </li>
+        <li>
+          <div>
+            <img src="/static/mainapp/image/work/analyse.png"  width="50" height="50">
+          </div>
+        </li>
+        <li>
+            <div>
+              <img src="/static/mainapp/image/work/analytic.png"  width="50" height="50">
+            </div>
+        </li>
+      </ul>
+
+      <div class="wrap">
+        <div class="intro_bg2">
+          <div class="intro_text2">
+            <h2>Visualize categorical data</h2>
+            <h4 class="contents1"></h4>
+          </div>
+        <div class="visual2"> 
+        <img src="/static/mainapp/image/Visualization/v_002.png"  width="900" height="500">
+        <h4 class="contents1"> 
+          범주형 자료의 경우 상관분석만으로는 정확한 분석이 어렵다고 판단하여
+          <br>
+          자료별 다양한 시각화를 진행하였습니다.
+          <br>
+          선박의 종류로 분류한 시각화를 통해 선박의 적재 효율성을 평가하여
+          <br>
+          최적의 선박을 선정하는 데 도움을 줄 수 있고
+          <br>
+          운송비 산정, 해상 무역 분석, 선박 설계 및 제작 등의 분야에도 활용할 수 있습니다.
+        </h4>
+        </div>
+      </div>
+        </div>
+
+        <ul class="amount">
+          <li>
+            <div>
+              <img src="/static/mainapp/image/work/database.png"  width="50" height="50">
+            </div>
+          </li>
+          <li>
+            <div>
+              <img src="/static/mainapp/image/work/stats.png"  width="50" height="50">
+            </div>
+          </li>
+          <li>
+            <div>
+              <img src="/static/mainapp/image/work/analyse.png"  width="50" height="50">
+            </div>
+          </li>
+          <li>
+              <div>
+                <img src="/static/mainapp/image/work/analytic.png"  width="50" height="50">
+              </div>
+          </li>
+        </ul>
+  
+        <div class="wrap">
+          <div class="intro_bg3">
+            <div class="intro_text">
+              <h2>Visualize categorical data</h2>
+              <h4 class="contents1"></h4>
+            </div>
+          <div class="visual3"> 
+          <img src="/static/mainapp/image/Visualization/v_003.png"  width="900" height="500">
+          <h4 class="contents1">국가/항구 별 항만 대기시간 시각화 자료를 통해
+            <br>
+            운영 효율성이 낮은 항구를 파악하고 개선 방안을 모색할 수 있습니다.
+            <br>
+            그 밖에 물류 비용 절감, 공급망 관리 개선, 해상 무역 분석,
+            <br>
+            해양 안전 및 환경 보호의 효과를 기대할 수 있습니다.
+            <br>
+            정박 시간대별 비율을 분석한 결과 유의미한 차이는 없는것으로 보입니다.</h4>
+          </div>
+        </div>
+          </div>
+
+          <ul class="amount">
+            <li>
+              <div>
+                <img src="/static/mainapp/image/work/database.png"  width="50" height="50">
+              </div>
+            </li>
+            <li>
+              <div>
+                <img src="/static/mainapp/image/work/stats.png"  width="50" height="50">
+              </div>
+            </li>
+            <li>
+              <div>
+                <img src="/static/mainapp/image/work/analyse.png"  width="50" height="50">
+              </div>
+            </li>
+            <li>
+                <div>
+                  <img src="/static/mainapp/image/work/analytic.png"  width="50" height="50">
+                </div>
+            </li>
+          </ul>
+        
+
+        </div>
+
+</body>
+</html>
+
+

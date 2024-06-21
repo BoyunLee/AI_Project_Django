@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: Main Page :::</title>
+    <link rel="stylesheet" href="{% static 'mainapp/bootstrap/css/bootstrap.min.css' %}">
+    <!-- jQuery 자바스크립트 적용하기 -->
+    <script type="text/javascript" src="{% static 'mainapp/js/jquery-3.7.1.min.js' %}"></script>
+    <script type="text/javascript">
+      function goLogout() {
+        location.href="/";
+      }
+    </script>
+    <style>
+      *{
+        font-family: 'Noto Sans KR', sans-serif;
+        list-style: none;
+        text-decoration: none;
+        border-collapse: collapse;
+        margin:0px;
+        padding: 0px;
+        color: #000;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: space-between; /* 이미지 사이의 간격을 동일하게 배분합니다. */
+        align-items: center; /* 이미지와 텍스트를 수직으로 정렬합니다. */
+      }
+      .image-container img {
+        width: 30%; /* 이미지의 너비를 화면 너비의 30%로 설정합니다. */
+        height: auto; /* 이미지의 높이를 자동으로 조정합니다. */
+        opacity: 0.6;
+      }
+      .text-container {
+        text-align: center; /* 텍스트를 가운데 정렬합니다. */
+      }
+
+      .text-container{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .contents1_bold{
+        font-size: 23px;
+        color: gray;
+        font-weight: bold;
+      }
+
+      /* main_text0 */
+
+      .main_text0{
+        width: 100%;
+        height:750px;
+        background: #f1f2f3;
+      }
+      .main_text0 > h1{
+        padding-top:116px;
+        text-align: center;
+      }
+      .main_text0 > .contents1 {
+        text-align: center;
+      }
+
+      .icons{
+        display: flex;
+        width:1280px;
+        height: 302px;
+        margin:auto;
+      }
+
+      .icons > li {
+        flex: 1;
+        background: white;
+        margin-top:49px;
+        height:450px;
+        text-align: center;
+      }
+      .icons > li > .icon_img{
+        margin-top:5px;
+      }
+
+      .icons > li:not(:last-child){
+        margin-right: 20px;
+      }
+
+      .icons .contents2 {
+        width:280px;
+        margin:auto;
+        letter-spacing: -1px;
+      }
+      .more{
+        width:100px;
+        height: 30px;
+        background: #2F7AF4;
+        color: #fff;
+        font-size: 12px;
+        line-height: 30px;
+        margin:25px auto;
+      }
+
+      /* main_text1*/
+
+      .main_text1{
+      width: 100%;
+      height:659px;
+     
+      }
+      .main_text1 > h1{
+      padding-top:60px;
+      text-align: center;
+      }
+      .main_text1 > .contents1 {
+      text-align: center;
+      }
+      .service {
+      width:1280px;
+      display: flex;
+      margin: 49px auto;
+      height:427px;
+      }
+
+      .service > .contents2 {
+      padding: 20px;
+      }
+      .service > .contents2 > h2{
+      margin-bottom: 27px;
+      }
+
+      /* main_text2 */
+      .main_text2 {
+      width:100%;
+      height:380px;
+      background-image: url("/static/mainapp/image/0005.png");
+      }
+
+      .main_text2 > ul {
+      display: flex;
+      padding-top:138px;
+      }
+
+      .main_text2 > ul > li {
+      flex: 1;
+      text-align: center;
+      }
+      .main_text2 > ul > li > div,
+      .main_text2 > ul > li > div > h1{
+      color: #1f1f1f;
+      }
+      .more2{
+      width:220px;
+      height:40px;
+      border: 1px solid #1f1f1f;
+      color: #1f1f1f;
+      line-height: 40px;
+      cursor: pointer;
+      margin:16px auto;
+      }
+
+      .footer{
+      display: flex;
+      background: #1f1f1f;
+      padding:30px;
+      }
+      .footer > div:first-child {
+      flex:3;
+      text-align: center;
+      color: #fff;
+      }
+      .footer > div:last-child {
+      flex:9;
+      color: #fff;
+      }
+
+      a {
+        text-decoration : none;
+      }
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">KDWs</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/outline/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/visualization/">Visualization</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/predict/">Predict</a>
+              </li>
+            </ul>
+            <button onclick="goLogout()" type="submit">Logout</button>
+          </div>
+        </div>
+      </nav>
+    {% comment %} <h3>FrontApp</h3>
+    <p>
+        <a href='front/'>[Frontapp 바로가기]</a>
+    </p> {% endcomment %}
+
+    <!-- iframe 영역 만들기 -->
+    {% comment %} <div id="section3">
+        <!-- <iframe src="http://www.daum.net" width="100%" height="300px" frameborder="0"></iframe> -->
+        <iframe src="/map/" width="50%" height="500px" frameborder="0"></iframe>
+    </div> {% endcomment %}
+
+    <div class="image-bag">
+        <h3 style="text-align:center;"><em><b>Project Introduction</b></em></h3>
+        <div class="CompetitionDetailTitleSection mx-auto px-5 px-md-7 py-6 grey v-sheet theme--light white--text" style="min-height:228px;min-width:230px;max-width:1194px;width:100%;background-image:url('https://dacon.s3.ap-northeast-2.amazonaws.com/competition/236158/header_background.jpeg');">
+          </div>     
+     
+
+<div class="main_text0">
+  <h1>ABOUT</h1>
+  <div class="contents1">잘 학습된 모델로 선박 대기시간을 예측합니다.</div>
+  
+  <ul class="icons">
+    <li>
+      <div class="icon_img">
+        <img src="/static/mainapp/image/001.jpg" width="350" height="290">
+      </div>
+      <div class="contents1_bold">Mission</div>
+      <div class="contents2">
+        <b>기술로 물류를 정확하고 안전하게</b>
+        <br>
+        우리는 선박의 대기시간 최소화를 통한 물류 및 운송 효율성 향상을 목표로 합니다.
+
+      </div>
+    </li>
+
+    <li>
+      <div class="icon_img">
+        <img src="/static/mainapp/image/002.jpg" width="350" height="290">
+      </div>
+      <div class="contents1_bold">Role</div>
+      <div class="contents2">
+        <b>정확한 예측 제공</b><br>
+        다양한 요인을 고려하여 신뢰할 수 있는 선박 대기 시간 예측 모델로 정확한 정보를 제공합니다.
+      </div>
+    </li>
+
+    <li>
+      <div class="icon_img">
+        <img src="/static/mainapp/image/003.jpg"  width="350" height="290">
+      </div>
+      <div class="contents1_bold">Vision</div>
+      <div class="contents2">
+        <b>Global Logistics Industry</b><br>
+        정확한 대기시간 예측으로 효율적인 물류 체인 구축하여 경쟁력 강화 및 기업 가치 향상을 목표로 합니다.
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="main_text1">
+  <h1>OverView of the Project </h1>
+  <div class="contents1">물류현황</div>
+  <div class="service">
+    <div class="food_photo">
+      <img src="/static/mainapp/image/008.jpg"  width="350" height="400">
+    </div>
+    <div class="contents2">
+      코로나19 이후 물류 정체로 인해 다수의 항만에서 선박 대기 시간이 길어지고, 이로 인한 물류 지연이 화두가 되고 있습니다. 
+      특히 전 세계 물동량의 85%를 차지하는 해운 물류 분야에서 항만 정체는 큰 문제로 인식되고 있는 상황입니다. 
+      저희 조는 접안 전에 선박이 해상에 정박하는 시간을 대기시간으로 정의하고, 
+      선박의 제원 및 운항 정보를 활용하여 산출된 항차 데이터를 활용해 항만 內 선박의 대기 시간을 예측하는 AI 알고리즘을 개발하였습니다.
+    </div>
+  </div>
+</div>
+
+<div class="main_text2">
+  <ul>
+    <li>
+      <div><h1>CONTACT</h1></div>
+      <div>우리에게 파트너십을 신청하거나, 고객이 되어주세요</div>
+      <div class="more2"><a href="/team/" style="color: black">더 알아보기</a></div>
+    </li>
+    <li></li>
+  </ul>
+</div>
+
+<div class="footer">
+  <div>LOGO</div>
+  <div>
+    CEO. Team.3 <br>
+    Addr. 부산광역시 남구 신선로 365 <br>
+    Tel. 051-629-4114 <br>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
+</body>
+</html>
+
+
